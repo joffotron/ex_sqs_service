@@ -1,0 +1,10 @@
+{
+  "name": "ex_sqs_service library hex module",
+  "steps": [
+    {
+      "type": "script",
+      "name": ":elixir: Build, test and lint",
+      "command": "make"
+    }
+  ]
+}

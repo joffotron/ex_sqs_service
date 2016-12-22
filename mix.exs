@@ -21,8 +21,8 @@ defmodule SqsService.Mixfile do
       {:sweet_xml, "0.6.3"},
       {:poison, "2.2.0"},
       {:espec, "~> 1.2.0",  only: :test,  app: false},
-      {:dogma, "0.1.13",    only: [:dev, :test, :lint]},
-      {:credo, "0.5.3",     only: [:dev, :test, :lint]},
+      {:dogma, "0.1.13",    only: [:dev, :test]},
+      {:credo, "0.5.3",     only: [:dev, :test]},
     ]
   end
 end
