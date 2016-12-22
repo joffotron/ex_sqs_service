@@ -1,16 +1,12 @@
-# SqsService
+# ex_sqs_service
 
-**TODO: Add description**
-
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+## Usage
 
   1. Add `ex_sqs_service` to your list of dependencies in `mix.exs`:
 
     ```elixir
     def deps do
-      [{:ex_sqs_service, "~> 0.1.0"}]
+      [{:ex_sqs_service, git: "https://github.com/raisebook/ex_sqs_service", branch: "master"}]
     end
     ```
 
@@ -21,4 +17,3 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
       [applications: [:ex_sqs_service]]
     end
     ```
-
