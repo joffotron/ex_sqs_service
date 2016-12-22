@@ -49,16 +49,17 @@ defmodule SqsService do
 
   defp parse_receive_response(%{message: nil}, _), do: {:no_message, nil}
   defp parse_receive_response(sqs_message, queue_name) do
+    first_message = sqs_message.messages |> List.first
     {:ok, %Message{
-      message_id: sqs_message.message.message_id,
+      message_id:  first_message.message_id,
       queue_name: queue_name,
-      receipt_handle: sqs_message.message.receipt_handle,
-      body: decode_body(sqs_message)
+      receipt_handle: first_message.receipt_handle,
+      body: decode_body(first_message)
       }}
   end
 
-  defp decode_body(sqs_message) do
-    {:ok, body} = sqs_message.message.body |> Poison.decode
+  defp decode_body(message) do
+    {:ok, body} = message.body |> Poison.decode
 
     case body do
       %{"TopicArn" => _} -> decode_sns_body(body)

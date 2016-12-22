@@ -17,7 +17,7 @@ defmodule SqsServiceSpec do
 
     context "SQS Message" do
       let ex_aws_response: %{
-        message: %{
+        messages: [%{
           receipt_handle: "dc41fb8c0872b2fcba8084a2fe082861",
           message_id: "34c9a3f2-05fd-4293-a88c-cbf686230745",
           body: ~s"""
@@ -26,7 +26,7 @@ defmodule SqsServiceSpec do
                 \"raising_name\":\"SpaceXMarsLanderBakeSale\",\"raising_slug\":\"spacex-bake-sale\"
               }
           """
-        }
+        }]
       }
 
       let sqs_response: {:ok, %{body: ex_aws_response()}}
@@ -53,7 +53,7 @@ defmodule SqsServiceSpec do
 
     context "SNS Message" do
       let ex_aws_response: %{
-            message: %{
+            messages: [%{
               message_id: "2849858e-fa3b-4331-a962-5ba9cc87324e",
               receipt_handle: "AQEB7oMmMBzaLnGepJI2vTfCFpdHb4BDEeg",
               body: ~S"""
@@ -69,7 +69,7 @@ defmodule SqsServiceSpec do
                 "UnsubscribeURL" : "https://sns.ap-southeast-2.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:ap-southeast-2:038451313208:test-accountant:d964dcea-3269-4eeb-8482-08b977ee36b3"
               }
               """
-          }
+          }]
         }
 
       let sqs_response: {:ok, %{body: ex_aws_response()}}
