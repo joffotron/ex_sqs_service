@@ -47,7 +47,7 @@ defmodule SqsService do
                |> ExAws.request
   end
 
-  defp parse_receive_response(%{message: nil}, _), do: {:no_message, nil}
+  defp parse_receive_response(%{messages: []}, _), do: {:no_message, nil}
   defp parse_receive_response(sqs_message, queue_name) do
     first_message = sqs_message.messages |> List.first
     {:ok, %Message{

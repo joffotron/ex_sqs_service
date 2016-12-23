@@ -7,7 +7,7 @@ defmodule SqsServiceSpec do
     let queue_name: "23445756765/test-queue"
 
     context "No message received" do
-      let sqs_response: {:ok, %{body: %{message: nil}}}
+      let sqs_response: {:ok, %{body: %{messages: []}}}
       subject do: SqsService.process_message(sqs_response(), queue_name())
 
       it "returns a :no_message tuple" do
