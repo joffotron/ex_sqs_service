@@ -18,17 +18,22 @@ defmodule SqsService do
 
   alias SqsService.Message
 
+  @spec get_message(queue_name :: binary) :: SqsService.Message
   def get_message(queue_name) do
     queue_name |> sqs_receive_message
                |> process_message(queue_name)
   end
 
+  @spec process_message(response :: ExAws.Request.response_t, queue_name :: binary) :: SqsService.Message
   def process_message(response, queue_name) do
     {:ok, %{body: sqs_message}} = response
     sqs_message |> parse_receive_response(queue_name)
   end
 
+  @spec mark_done({:no_message, any()}) :: {:no_message, any()}
   def mark_done({:no_message, _} = passthrough), do: passthrough
+
+  @spec mark_done({:ok, %Message{}}) :: {:ok, String.t}
   def mark_done({:ok, %Message{message_id: message_id, queue_name: queue_name} = message}) do
     {:ok, _} = sqs_delete_message(message)
     Logger.info "Deleted message #{message_id} from #{queue_name}"
