@@ -17,7 +17,7 @@ defmodule SqsService.Mixfile do
 
   defp deps do
     [
-      {:ex_aws, git: "https://github.com/raisebook/ex_aws", branch: "feature/cloudformation", optional: true},
+      {:ex_aws, "~> 1.1", optional: true},
       {:sweet_xml, "~> 0.6.5"},
       {:poison, "~> 3.1.0", override: true},
       {:espec, "~> 1.2.2",  only: :test,  app: false},
