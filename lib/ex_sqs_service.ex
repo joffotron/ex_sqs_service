@@ -20,8 +20,10 @@ defmodule SqsService do
 
   @spec get_message(queue_name :: binary) :: SqsService.Message
   def get_message(queue_name) do
-    queue_name |> sqs_receive_message
-               |> process_message(queue_name)
+    case queue_name |> sqs_receive_message do
+      {:ok, response} -> {:ok, response} |> process_message(queue_name)
+      {:error, err} -> {:error, err}
+    end
   end
 
   @spec process_message(response :: ExAws.Request.response_t, queue_name :: binary) :: SqsService.Message

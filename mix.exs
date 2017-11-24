@@ -4,8 +4,8 @@ defmodule SqsService.Mixfile do
   def project do
     [
       app: :ex_sqs_service,
-      version: "0.2.0",
-      elixir: "~> 1.3",
+      version: "0.2.1",
+      elixir: "~> 1.4",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
       preferred_cli_env: [
