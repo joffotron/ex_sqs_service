@@ -6,7 +6,7 @@
 
     ```elixir
     def deps do
-      [{:ex_sqs_service, git: "https://github.com/raisebook/ex_sqs_service", branch: "master"}]
+      [{:ex_sqs_service, git: "https://github.com/raisebook/ex_sqs_service", tag: "0.2.0"}]
     end
     ```
 
@@ -17,3 +17,6 @@
       [applications: [:ex_sqs_service]]
     end
     ```
+### Building
+
+Run `make` to build test and lint
