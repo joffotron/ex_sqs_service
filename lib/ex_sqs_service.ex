@@ -41,7 +41,7 @@ defmodule SqsService do
   end
 
   defp sqs_receive_message(queue_name) do
-    Logger.debug "Requesting message from #{queue_name}"
+    Logger.debug fn -> "Requesting message from #{queue_name}"  end
 
     queue_name |> ExAws.SQS.receive_message
                |> ExAws.request
