@@ -21,7 +21,7 @@ defmodule SqsService.Mixfile do
 
   defp deps do
     [
-      {:ex_aws, "~> 2.0.1",   optional: true},
+      {:ex_aws, "~> 2.1",   optional: true},
       {:ex_aws_sqs, "~> 2.0", optional: true},
       {:sweet_xml, "~> 0.6.5"},
       {:poison, "~> 3.1.0", override: true},
